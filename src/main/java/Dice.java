@@ -13,10 +13,10 @@ import java.util.Random;
 public class Dice {
 
     /** Private random number generator. */
-    Random myRand;
+    private Random myRand;
 
     /** Number of sides for this dice. */
-    int numSides;
+    private int numSides;
 
     /**
      * Create a new dice with a given number of sides.
@@ -36,6 +36,6 @@ public class Dice {
      * @return the number the die rolled
      */
     public int roll() {
-        return (myRand.nextInt(numSides) + 1);
+         return (myRand.nextInt(numSides) + 1);
     }
 }

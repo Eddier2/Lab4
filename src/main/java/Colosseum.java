@@ -43,7 +43,7 @@ public class Colosseum {
      * <p>
      * Requirements we should check the user for: <br>
      * - Hit points are between 1 and MAX_HIT_POINTS <br>
-     * - No more than 50 points are split between attack level and defense leve <br>
+     * - No more than 50 points are split between attack level and defense level <br>
      * - Attack level and defense level must have at least 1 point each <br>
      * Example of how this will look to the user:
      * <p>
@@ -73,6 +73,21 @@ public class Colosseum {
      */
     public static Pokemon buildPokemon() {
         Pokemon tempPokemon = new Pokemon();
+        String pokeName = myScan.next();
+        tempPokemon.name = pokeName;
+        int x = myScan.nextInt();
+        System.out.println("How many hit points will it have? (1-50): ");
+        if (x <= MAX_HIT_POINTS && x > 0)
+            tempPokemon.hitPoints = x;
+        int y = myScan.nextInt();
+        System.out.println("Split fifty points between attack level and defense level");
+        System.out.println("Enter your attack level");
+        if (y < MAX_HIT_POINTS && y > 0)
+            tempPokemon.attackLevel = y;
+        int d = myScan.nextInt();
+        System.out.println("Enter your defense level " + "(" + Integer.toString(MAX_HIT_POINTS - y) + "):");
+        if (d <= MAX_HIT_POINTS - y && d > 0)
+            tempPokemon.defenseLevel = d;
         return tempPokemon;
     }
 
@@ -90,7 +105,14 @@ public class Colosseum {
      * Implement this function.
      */
     public static void printWhoIsAhead() {
-        System.out.println("Implement me!");
+        if (firstPokemon.hitPoints > secondPokemon.hitPoints) {
+            System.out.println(firstPokemon.name + "is currently ahead!");
+        }
+        if (firstPokemon.hitPoints < secondPokemon.hitPoints) {
+            System.out.println(secondPokemon.name + "is currently ahead!");
+        } else {
+            System.out.println("There is a Tie!");
+        }
     }
 
     /**
